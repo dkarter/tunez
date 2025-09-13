@@ -8,4 +8,14 @@ defmodule Tunez.Music.Artist do
     table "artists"
     repo Tunez.Repo
   end
+
+  attributes do
+    uuid_v7_primary_key :id
+
+    attribute :name, :string, allow_nil?: false
+    attribute :biography, :string
+
+    create_timestamp :inserted_at
+    update_timestamp :updated_at
+  end
 end
