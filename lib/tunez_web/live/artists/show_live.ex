@@ -8,7 +8,7 @@ defmodule TunezWeb.Artists.ShowLive do
   end
 
   def handle_params(%{"id" => id}, _url, socket) do
-    artist = Tunez.Music.get_artists_by_id!(id)
+    artist = Tunez.Music.get_artist_by_id!(id)
 
     albums = [
       %{
