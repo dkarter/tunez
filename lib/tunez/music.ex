@@ -3,7 +3,8 @@ defmodule Tunez.Music do
   Represents the music domain, containing resources such as artists, albums, and tracks.
   """
   use Ash.Domain,
-    otp_app: :tunez
+    otp_app: :tunez,
+    extensions: [AshPhoenix]
 
   resources do
     resource Tunez.Music.Artist do
