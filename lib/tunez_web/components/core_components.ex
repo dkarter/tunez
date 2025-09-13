@@ -16,9 +16,10 @@ defmodule TunezWeb.CoreComponents do
   """
   use Phoenix.Component
   use TunezWeb, :verified_routes
-
-  alias Phoenix.LiveView.JS
   use Gettext, backend: TunezWeb.Gettext
+
+  alias Phoenix.HTML.Form
+  alias Phoenix.LiveView.JS
 
   @doc """
   Renders flash notices.
@@ -188,30 +189,18 @@ defmodule TunezWeb.CoreComponents do
     """
   end
 
+  @button_style_theme_map %{
+    {"base", false} => "bg-gray-100",
+    {"base", true} => "border border-gray-500 text-gray-600",
+    {"primary", false} => "bg-primary-600 hover:bg-primary-700 text-white",
+    {"primary", true} =>
+      "border border-primary-700 text-primary-700 hover:bg-primary-50 font-semibold",
+    {"error", false} => "bg-error-700 hover:bg-error-800 text-white",
+    {"error", true} => "text-error-600 underline"
+  }
+
   def button_styles(kind, inverse, size) do
-    theme =
-      case {kind, inverse} do
-        {"base", false} ->
-          "bg-gray-100"
-
-        {"base", true} ->
-          "border border-gray-500 text-gray-600"
-
-        {"primary", false} ->
-          "bg-primary-600 hover:bg-primary-700 text-white"
-
-        {"primary", true} ->
-          "border border-primary-700 text-primary-700 hover:bg-primary-50 font-semibold"
-
-        {"error", false} ->
-          "bg-error-700 hover:bg-error-800 text-white"
-
-        {"error", true} ->
-          "text-error-600 underline"
-
-        _ ->
-          ""
-      end
+    theme = Map.get(@button_style_theme_map, {kind, inverse}, "")
 
     [
       "phx-submit-loading:opacity-75 rounded-lg font-medium leading-none inline-block",
@@ -358,7 +347,7 @@ defmodule TunezWeb.CoreComponents do
   def input(%{type: "checkbox"} = assigns) do
     assigns =
       assign_new(assigns, :checked, fn ->
-        Phoenix.HTML.Form.normalize_value("checkbox", assigns[:value])
+        Form.normalize_value("checkbox", assigns[:value])
       end)
 
     ~H"""

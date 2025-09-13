@@ -106,7 +106,7 @@ defmodule TunezWeb.Artists.IndexLiveTest do
     end
 
     def assert_ordered_artists(session, list) do
-      Enum.map(Enum.with_index(list, 1), fn {name, index} ->
+      Enum.each(Enum.with_index(list, 1), fn {name, index} ->
         assert_has(session, "[data-role='artist-name']", text: name, at: index)
       end)
 

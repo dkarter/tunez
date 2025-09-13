@@ -37,6 +37,7 @@ defmodule Tunez.MixProject do
       {:ash_postgres, "~> 2.0"},
       {:sourceror, "~> 1.8", only: [:dev, :test]},
       {:ash, "~> 3.0"},
+      {:credo, "~> 1.7", only: [:dev, :test]},
       {:phoenix, "~> 1.8.0-rc.1", override: true},
       {:phoenix_ecto, "~> 4.5"},
       {:ecto_sql, "~> 3.10"},
