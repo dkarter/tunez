@@ -22,5 +22,9 @@ defmodule Tunez.Music do
       define :update_album, action: :update
       define :destroy_album, action: :destroy
     end
+
+    forms do
+      form :create_album, args: [:artist_id]
+    end
   end
 end
