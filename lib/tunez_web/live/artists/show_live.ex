@@ -155,7 +155,21 @@ defmodule TunezWeb.Artists.ShowLive do
     {:noreply, socket}
   end
 
-  def handle_event("destroy-album", _params, socket) do
+  def handle_event("destroy-album", %{"id" => album_id}, socket) do
+    socket =
+      case Tunez.Music.destroy_album(album_id) do
+        :ok ->
+          socket
+          |> put_flash(:info, "Album deleted successfully.")
+          |> push_navigate(to: ~p"/artists/#{socket.assigns.artist.id}")
+
+        {:error, error} ->
+          Logger.error("Failed to delete album: #{inspect(error)}")
+
+          socket
+          |> put_flash(:error, "Could not delete album.")
+      end
+
     {:noreply, socket}
   end
 
