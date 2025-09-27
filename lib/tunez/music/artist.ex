@@ -51,4 +51,10 @@ defmodule Tunez.Music.Artist do
   relationships do
     has_many :albums, Tunez.Music.Album, sort: {:year_released, :desc}
   end
+
+  calculations do
+    calculate :album_count, :integer, expr(count(albums))
+    calculate :latest_album_year_released, :integer, expr(first(albums, field: :year_released))
+    calculate :cover_image_url, :string, expr(first(albums, field: :cover_image_url))
+  end
 end

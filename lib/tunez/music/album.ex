@@ -53,6 +53,14 @@ defmodule Tunez.Music.Album do
     belongs_to :artist, Tunez.Music.Artist, allow_nil?: false
   end
 
+  calculations do
+    calculate :years_ago, :integer, expr(2025 - year_released)
+
+    calculate :years_ago_str,
+              :string,
+              expr("wow, this was released " <> years_ago <> " years ago!")
+  end
+
   identities do
     identity :unique_album_per_artist, [:name, :artist_id]
   end
