@@ -22,6 +22,10 @@ defmodule Tunez.Music.Artist do
     end
   end
 
+  resource do
+    description "A person or a group who creates and releases music."
+  end
+
   actions do
     defaults [:create, :read, :destroy]
     default_accept [:name, :biography]
@@ -34,9 +38,11 @@ defmodule Tunez.Music.Artist do
     end
 
     read :search do
+      description "Lists artists, optionally filtered by name"
       pagination offset?: true, default_limit: 12
 
       argument :query, :ci_string do
+        description "Return only artists with names including the given value (case insensitive)"
         constraints allow_empty?: true
         default ""
       end
