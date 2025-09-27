@@ -6,16 +6,19 @@ defmodule TunezWeb.Artists.IndexLive do
   def mount(_params, _session, socket) do
     socket =
       socket
+      |> assign(:query_text, "")
       |> assign(:page_title, "Artists")
 
     {:ok, socket}
   end
 
-  def handle_params(_params, _url, socket) do
-    artists = Tunez.Music.list_artists!(load: [:albums])
+  def handle_params(params, _url, socket) do
+    query_text = Map.get(params, "q", "")
+    artists = Tunez.Music.search_artists!(query_text)
 
     socket =
       socket
+      |> assign(:query_text, query_text)
       |> assign(:artists, artists)
 
     {:noreply, socket}
@@ -26,6 +29,9 @@ defmodule TunezWeb.Artists.IndexLive do
     <Layouts.app {assigns}>
       <.header responsive={false}>
         <.h1>Artists</.h1>
+        <:action>
+          <.search_box data-role="artist-search" method="get" phx-submit="search" query={@query_text} />
+        </:action>
         <:action>
           <.button_link navigate={~p"/artists/new"} kind="primary">
             New Artist
