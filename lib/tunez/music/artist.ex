@@ -10,6 +10,7 @@ defmodule Tunez.Music.Artist do
 
   graphql do
     type :artist
+    derive_filter? false
   end
 
   json_api do
