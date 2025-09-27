@@ -12,7 +12,7 @@ defmodule TunezWeb.Artists.IndexLive do
   end
 
   def handle_params(_params, _url, socket) do
-    artists = Tunez.Music.list_artists!()
+    artists = Tunez.Music.list_artists!(load: [:albums])
 
     socket =
       socket
