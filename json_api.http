@@ -32,6 +32,13 @@ Content-Type: {{CONTENT_TYPE}}
 Accept: {{CONTENT_TYPE}}
 
 
+### Single Artist Albums
+
+GET {{BASE_URL}}/artists/01994699-067d-74e9-a332-be5eda93f2b9/albums HTTP/1.1
+Content-Type: {{CONTENT_TYPE}}
+Accept: {{CONTENT_TYPE}}
+
+
 ### Create Artist
 
 POST {{BASE_URL}}/artists HTTP/1.1
@@ -47,3 +54,6 @@ Accept: {{CONTENT_TYPE}}
     "type": "artist"
   }
 }
+
+
+### 
