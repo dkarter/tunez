@@ -49,8 +49,8 @@ defmodule Tunez.Music.Artist do
     uuid_v7_primary_key :id
 
     attribute :name, :string, allow_nil?: false, public?: true
-    attribute :biography, :string
-    attribute :previous_names, {:array, :string}, default: []
+    attribute :biography, :string, public?: true
+    attribute :previous_names, {:array, :string}, default: [], public?: true
 
     create_timestamp :inserted_at, public?: true
     update_timestamp :updated_at, public?: true
