@@ -20,8 +20,7 @@ defmodule TunezWeb.Artists.IndexLive do
     page =
       Tunez.Music.search_artists!(query_text,
         page: page_params,
-        query: [sort_input: sort_by],
-        load: [:cover_image_url]
+        query: [sort_input: sort_by]
       )
 
     socket =
