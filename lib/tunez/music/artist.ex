@@ -2,7 +2,15 @@ defmodule Tunez.Music.Artist do
   @moduledoc """
   Represents a musical artist.
   """
-  use Ash.Resource, otp_app: :tunez, domain: Tunez.Music, data_layer: AshPostgres.DataLayer
+  use Ash.Resource,
+    otp_app: :tunez,
+    domain: Tunez.Music,
+    data_layer: AshPostgres.DataLayer,
+    extensions: [AshJsonApi.Resource]
+
+  json_api do
+    type "artist"
+  end
 
   postgres do
     table "artists"
