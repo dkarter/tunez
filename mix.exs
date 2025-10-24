@@ -34,6 +34,7 @@ defmodule Tunez.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
+      {:ash_authentication_phoenix, "~> 2.0"},
       {:bcrypt_elixir, "~> 3.0"},
       {:picosat_elixir, "~> 0.2"},
       {:ash_authentication, "~> 4.0"},
@@ -46,13 +47,13 @@ defmodule Tunez.MixProject do
       {:sourceror, "~> 1.8", only: [:dev, :test]},
       {:ash, "~> 3.0"},
       {:credo, "~> 1.7", only: [:dev, :test]},
-      {:phoenix, "~> 1.8.0-rc.1", override: true},
+      {:phoenix, "~> 1.8"},
       {:phoenix_ecto, "~> 4.5"},
       {:ecto_sql, "~> 3.10"},
       {:postgrex, ">= 0.0.0"},
       {:phoenix_html, "~> 4.1"},
       {:phoenix_live_reload, "~> 1.2", only: :dev},
-      {:phoenix_live_view, "~> 1.0.0"},
+      {:phoenix_live_view, "~> 1.1"},
       # Floki 0.38 not compatible with PhoenixTest https://github.com/germsvel/phoenix_test/issues/223
       {:floki, ">= 0.30.0 and < 0.38.0", only: :test},
       {:phoenix_live_dashboard, "~> 0.8.3"},
@@ -74,7 +75,7 @@ defmodule Tunez.MixProject do
       {:dns_cluster, "~> 0.2"},
       {:bandit, "~> 1.5"},
       {:igniter, "~> 0.3", only: [:dev]},
-      {:phoenix_test, "~> 0.7.0", only: :test, runtime: false}
+      {:phoenix_test, "~> 0.8.2", only: :test, runtime: false}
     ]
   end
 
