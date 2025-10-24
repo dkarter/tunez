@@ -1,0 +1,91 @@
+### JSON API
+
+@BASE_URL = http://localhost:4000/gql
+@CONTENT_TYPE = application/json
+
+
+### Search Artists
+
+GRAPHQL {{BASE_URL}} HTTP/1.1
+Accept: {{CONTENT_TYPE}}
+
+query ListArtistsWithAlbums {
+  searchArtists(query: "co") {
+    pageNumber
+    count
+    hasPreviousPage
+    hasNextPage
+    lastPage
+    limit
+    results {
+      albumCount
+      biography
+      id
+      name
+      previousNames
+      updatedAt
+      albums {
+        name
+        yearReleased
+      }
+    }
+  }
+}
+
+
+### All Artists
+
+GRAPHQL {{BASE_URL}} HTTP/1.1
+Accept: {{CONTENT_TYPE}}
+
+query ListArtistsWithAlbums {
+  searchArtists {
+    pageNumber
+    count
+    hasPreviousPage
+    hasNextPage
+    lastPage
+    limit
+    results {
+      albumCount
+      biography
+      id
+      name
+      previousNames
+      updatedAt
+      albums {
+        name
+        yearReleased
+      }
+    }
+  }
+}
+
+
+### Next Page of Artists
+
+GRAPHQL {{BASE_URL}} HTTP/1.1
+Accept: {{CONTENT_TYPE}}
+
+query ListArtistsWithAlbums {
+  searchArtists(offset: 12) {
+    pageNumber
+    count
+    hasPreviousPage
+    hasNextPage
+    lastPage
+    limit
+    results {
+      albumCount
+      biography
+      id
+      name
+      previousNames
+      updatedAt
+      albums {
+        name
+        yearReleased
+      }
+    }
+  }
+}
