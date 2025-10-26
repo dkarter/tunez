@@ -56,4 +56,34 @@ Accept: {{CONTENT_TYPE}}
 }
 
 
-### 
+### Register User
+
+POST {{BASE_URL}}/users/register HTTP/1.1
+Content-Type: {{CONTENT_TYPE}}
+Accept: {{CONTENT_TYPE}}
+
+{
+  "data": {
+    "attributes": {
+      "email": "y@example.com",
+      "password": "securepassword",
+      "password_confirmation": "securepassword"
+    }
+  }
+}
+
+
+### Sign In User
+
+POST {{BASE_URL}}/users/sign_in HTTP/1.1
+Content-Type: {{CONTENT_TYPE}}
+Accept: {{CONTENT_TYPE}}
+
+{
+  "data": {
+    "attributes": {
+      "email": "y@example.com",
+      "password": "securepassword"
+    }
+  }
+}
