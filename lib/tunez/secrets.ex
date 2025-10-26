@@ -1,4 +1,7 @@
 defmodule Tunez.Secrets do
+  @moduledoc """
+  Provides secrets for AshAuthentication.
+  """
   use AshAuthentication.Secret
 
   def secret_for(

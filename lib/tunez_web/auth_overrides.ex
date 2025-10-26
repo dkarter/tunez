@@ -1,4 +1,8 @@
 defmodule TunezWeb.AuthOverrides do
+  @moduledoc """
+  Overrides for AshAuthentication.Phoenix components to better fit the
+  TunezWeb design system.
+  """
   use AshAuthentication.Phoenix.Overrides
 
   alias AshAuthentication.Phoenix.Components
