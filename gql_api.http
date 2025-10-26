@@ -89,3 +89,39 @@ query ListArtistsWithAlbums {
     }
   }
 }
+
+
+### Register User
+
+GRAPHQL {{BASE_URL}} HTTP/1.1
+Accept: {{CONTENT_TYPE}}
+
+mutation RegisterUser {
+  registerUser(
+    input: {
+      email: "yyy@example.com"
+      password: "yourpassword"
+      passwordConfirmation: "yourpassword"
+    }
+  ) {
+    result {
+      id
+      email
+    }
+    metadata {
+      token
+    }
+  }
+}
+
+
+### Sign In User
+
+GRAPHQL {{BASE_URL}} HTTP/1.1
+Accept: {{CONTENT_TYPE}}
+
+query SignInUser {
+  signInUser(email: "yyy@example.com", password: "yourpassword") {
+    token
+  }
+}
