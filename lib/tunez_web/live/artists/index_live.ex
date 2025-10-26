@@ -3,6 +3,8 @@ defmodule TunezWeb.Artists.IndexLive do
 
   require Logger
 
+  on_mount {TunezWeb.LiveUserAuth, :live_user_optional}
+
   def mount(_params, _session, socket) do
     socket =
       socket
